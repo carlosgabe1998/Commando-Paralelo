@@ -649,7 +649,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			/*dead = true;*/
 		}
 	}
-
+	
 	if(c1 == col && dead == false && App->fade->IsFading() == false)
 	{
 
