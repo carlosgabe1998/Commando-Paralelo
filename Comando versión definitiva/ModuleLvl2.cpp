@@ -9,6 +9,8 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
+#include "ModuleParticles.h"
+#include "ModulePowerUp.h"
 #include "ModuleSecretAreas.h"
 
 ModuleLvl2::ModuleLvl2(){
@@ -42,6 +44,8 @@ bool ModuleLvl2::Start() {
 	App->player->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
+	App->particles->Enable();
+	App->powerup->Enable();
 
 	//Cameras positions
 	App->render->camera.x = App->render->camera.y = 0;
@@ -80,6 +84,9 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
+
+	//PowerUps
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT));
 	
 	// Colliders ---
 	int i = 0;
