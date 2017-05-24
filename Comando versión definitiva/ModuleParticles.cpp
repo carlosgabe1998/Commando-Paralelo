@@ -8,6 +8,8 @@
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 #include "ModulePlayer.h"
+#include "ModuleLvl2.h"
+#include "ModuleSecretAreas.h"
 
 ModuleParticles::ModuleParticles()
 {
@@ -25,6 +27,20 @@ ModuleParticles::ModuleParticles()
 	grenade.anim.PushBack({ 79,69,5,6 });
 	grenade.anim.speed = 0.09f;
 	grenade.anim.loop = true;
+
+	die_Green.anim.PushBack({ 102, 5, 16, 27 });
+	die_Green.anim.PushBack({ 119, 5, 16, 27 });
+	die_Green.anim.PushBack({ 138, 13, 10, 8 });
+	die_Green.anim.speed = 0.07f;
+	die_Green.anim.loop = false;
+	die_Green.life = 1000;
+
+	die_Grey.anim.PushBack({ 59, 5, 16, 26 });
+	die_Grey.anim.PushBack({ 77, 5, 16, 26 });
+	die_Grey.anim.PushBack({ 5, 90, 10, 8 });
+	die_Grey.anim.speed = 0.07f;
+	die_Grey.anim.loop = false;
+	die_Grey.life = 1000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -79,6 +95,7 @@ update_status ModuleParticles::Update()
 			App->render->Blit(App->player->graphparticles, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));			
 			if(p->fx_played == false)
 			{
+				if (p->collider->type == COLLIDER_PLAYER_SHOT)
 				App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 				p->fx_played = true;
 				// play the audio SFX
@@ -119,7 +136,36 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
 			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
-			if (c1->type != COLLIDER_PLAYER_GRENADE_EXPL && c1->type != COLLIDER_PLAYER_GRENADE && c1->type != COLLIDER_ENEMY_GRENADE_EXPL && c1->type != COLLIDER_ENEMY_GRENADE)
+			if (c1->type == COLLIDER_PLAYER_GRENADE_EXPL&&c2->type == COLLIDER_DOWNSTAIRS) {
+
+				if (App->player->position.y > -(2880 - 2500 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair1_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 2500 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 1544 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair2_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 1544 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 1200 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair3_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 1200 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 1000 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair4_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 1000 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 735 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair5_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 735 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair6_animation = &App->lvl2->stair;
+				}
+
+
+
+			}
+			if (c1->type == COLLIDER_PLAYER_GRENADE_EXPL&&c2->type == COLLIDER_UPSTAIRS) {
+				if (App->secretareas->actual_room == ROOM3) {
+					App->secretareas->ystair = &App->secretareas->yellowstair;
+				}
+			}
+			if (c1->type != COLLIDER_PLAYER_GRENADE_EXPL && c1->type != COLLIDER_PLAYER_GRENADE && c1->type != COLLIDER_ENEMY_GRENADE_EXPL && c1->type != COLLIDER_ENEMY_GRENADE && c1->type != COLLIDER_DIE)
 			{
 				delete active[i];
 				active[i] = nullptr;
@@ -174,12 +220,12 @@ bool Particle::Update()
 		if(anim.Finished())
 			ret = false;
 
-	if (this->collider->type != COLLIDER_PLAYER_GRENADE)
+	if (this->collider->type != COLLIDER_PLAYER_GRENADE || this->collider->type != COLLIDER_ENEMY_GRENADE)
 	{
 		position.x += speed.x;
 		position.y += speed.y;
 	}
-	else
+	else if (this->collider->type == COLLIDER_PLAYER_GRENADE || this->collider->type == COLLIDER_ENEMY_GRENADE)
 	{
 		if ((SDL_GetTicks() - born) > life / 1.1)
 		{
@@ -192,7 +238,11 @@ bool Particle::Update()
 			position.y += speed.y;
 		}
 	}
-
+	else if (this->collider->type == COLLIDER_DIE)
+	{
+		position.x += 0;
+		position.y += 0;
+	}
 	if(collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
