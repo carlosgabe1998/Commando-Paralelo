@@ -14,7 +14,8 @@ enum ENEMY_TYPES
 	CAPTURERGUARD,
 	BOSSLVL1,
 	KNIFE,
-	BOSSGRENADE
+	BOSSGRENADE,
+	RUNNER
 
 };
 enum MOVE_STATE {
@@ -54,6 +55,8 @@ public:
 	virtual void ColPathDown() {};
 	virtual void ColPathLeft() {};
 	virtual void ColPathRight() {};
+	virtual void setMove(bool boolean) {};
+	virtual bool getRelax() { return false; };
 	virtual bool* getMoving() const { bool* buf = nullptr; return buf; };
 };
 

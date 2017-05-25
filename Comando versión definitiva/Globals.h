@@ -26,8 +26,25 @@ enum COUNTERS
 	Helicopter,
 	stairs,
 	gas,
+	respawn,
 	//Add your counter types here
 	MAX_COUNTER
+};
+enum PowerUp_Types
+{
+	POWERUP_NO_TYPE = -1,
+	BINOCULAR,
+	BULLETPROOF_VEST,
+	GASOLINE,
+	GRENADEx4,
+	GRENADEx5,
+	MEDAL,
+	MEDAL_OF_HONOR,
+	BARREL,
+	BAG,
+	ALLY_CAPTURED,
+	MEGA_SHOOT,
+	MAX_POWERUP_TYPE
 };
 
 float time_Counters[COUNTERS::MAX_COUNTER];

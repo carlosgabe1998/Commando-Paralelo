@@ -82,6 +82,8 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		//colliders 
 
+		App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 218, 72, false);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, 0, 256, 31 }, COLLIDER_WALL);
@@ -113,6 +115,9 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.x = SCREEN_WIDTH / 2;
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		//colliders 
+
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 26, 49, false);
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 48, 49, false);
 
 		//WALL
 		int i = 0;
@@ -162,8 +167,7 @@ bool ModuleSecretAreas::Start() {
 
 		//UPSTAIRS
 		int j = 0;
-		upstairs[j++] = App->collision->AddCollider({ 40, 44, 2, 2 }, COLLIDER_UPSTAIRS);
-
+		upstairs[j++] = App->collision->AddCollider({ 40, 34, 2, 12 }, COLLIDER_UPSTAIRS);
 
 
 	}
@@ -189,6 +193,8 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 212, -(448 - 289 - SCREEN_HEIGHT), false);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 32, 448 }, COLLIDER_WALL);
@@ -197,18 +203,21 @@ bool ModuleSecretAreas::Start() {
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - 35 - SCREEN_HEIGHT), 64, 60 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 32, -(448 - 95 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 60, -(448 - 95 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 32, -(448 - 231 - SCREEN_HEIGHT), 16, 33 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 80, -(448 - 231 - SCREEN_HEIGHT), 160, 33 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 31, -(448 - 216 - SCREEN_HEIGHT), 17, 48 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 80, -(448 - 216 - SCREEN_HEIGHT), 160, 50 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 96, -(448 - 88 - SCREEN_HEIGHT), 16, 143 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 112, -(448 - 88 - SCREEN_HEIGHT), 48, 32 }, COLLIDER_WALL);
-
 
 		//UPSTAIRS
 		int j = 0;
 		upstairs[j++] = App->collision->AddCollider({ 36, -(448 - 95 - SCREEN_HEIGHT), 24, 5 }, COLLIDER_UPSTAIRS);
 
-
-
+		//Allies
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 128, -(448 - 108 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 266 - 3 - SCREEN_HEIGHT));
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM5) {
 
@@ -233,6 +242,11 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 299 - SCREEN_HEIGHT), false);
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 331 - SCREEN_HEIGHT), false);
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 363 - SCREEN_HEIGHT), false);
+		App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 24, -(448 - 286 - SCREEN_HEIGHT), false);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
@@ -240,21 +254,23 @@ bool ModuleSecretAreas::Start() {
 		wall[i++] = App->collision->AddCollider({ 240, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 48, -(448 - 27 - SCREEN_HEIGHT), 16, 95 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 176, -(448 - 118 - SCREEN_HEIGHT), 16, 114 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 16, -(448 - 232 - SCREEN_HEIGHT), 17, 37 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 71, -(448 - 232 - SCREEN_HEIGHT), 169, 37 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 16, -(448 - 216 - SCREEN_HEIGHT), 17, 48 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 71, -(448 - 216 - SCREEN_HEIGHT), 169, 48 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 96, -(448 - 312 - SCREEN_HEIGHT), 64, 73 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 140, -(448 - 385 - SCREEN_HEIGHT), 20, 12 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 96, -(448 - 385 - SCREEN_HEIGHT), 20, 12 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 15, -(448 - 19 - SCREEN_HEIGHT), 34, 24 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 63, -(448 - 17 - SCREEN_HEIGHT), 149, 26 }, COLLIDER_WALL);
 
-
 		//UPSTAIRS
 		int j = 0;
-		upstairs[j++] = App->collision->AddCollider({ 217, -(448 - 35 - SCREEN_HEIGHT), 12, 3 }, COLLIDER_UPSTAIRS);
-		upstairs[j++] = App->collision->AddCollider({ 117, -(448 - 386 - SCREEN_HEIGHT), 23, 4 }, COLLIDER_UPSTAIRS);
+		upstairs[j++] = App->collision->AddCollider({ 227, -(448 - 35 - 5 - SCREEN_HEIGHT), 5, 3 }, COLLIDER_UPSTAIRS);
+		upstairs[j++] = App->collision->AddCollider({ 127, -(448 - 386 - SCREEN_HEIGHT), 10, 4 }, COLLIDER_UPSTAIRS);
 
-
+		//Allies
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 48, -(448 - 102 - 10 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 88, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT));
 
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM6) {
@@ -278,6 +294,12 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 72, -(448 - 100 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 120, -(448 - 100 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 184, -(448 - 100 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 97, -(448 - 300 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 155, -(448 - 300 - SCREEN_HEIGHT));
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
@@ -293,12 +315,7 @@ bool ModuleSecretAreas::Start() {
 		//UPSTAIRS
 		int j = 0;
 		upstairs[j++] = App->collision->AddCollider({ 117, -(448 - 32 - SCREEN_HEIGHT), 22, 4 }, COLLIDER_UPSTAIRS);
-
-
-
 	}
-
-
 	return true;
 }
 
@@ -355,7 +372,7 @@ update_status ModuleSecretAreas::Update() {
 		break;
 	case ROOM5:
 
-		if (App->player->position.x < 50 && App->player->position.y == -(448 - 282 - SCREEN_HEIGHT) && (int)swallposition.y != 221) {
+		if (App->player->position.x < 50 && App->player->position.y == 42 && (int)swallposition.y != 221) {
 			swallposition.y += 0.1;
 			App->player->move = false;
 			if (playdorosound) {
