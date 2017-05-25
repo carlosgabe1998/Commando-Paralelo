@@ -103,9 +103,9 @@ bool ModuleLvl2::Start() {
 	wall[i++] = App->collision->AddCollider({ 197, -(2880 - 1687 - SCREEN_HEIGHT), 59, 107 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1558 - SCREEN_HEIGHT), 38, 109 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 213, -(2880 - 1494 - SCREEN_HEIGHT), 43, 108 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1344 - SCREEN_HEIGHT), 99, 85 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1359 - SCREEN_HEIGHT), 100, 67 }, COLLIDER_WALL);
 
-	wall[i++] = App->collision->AddCollider({ 156, -(2880 - 1344 - SCREEN_HEIGHT), 100, 85 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 156, -(2880 - 1359 - SCREEN_HEIGHT), 100, 68 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 870 - SCREEN_HEIGHT), 38, 78 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 230, -(2880 - 823 - SCREEN_HEIGHT), 26, 75 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 101, -(2880 - 726 - SCREEN_HEIGHT), 51, 32 }, COLLIDER_WALL);
@@ -213,6 +213,7 @@ update_status ModuleLvl2::Update(){
 	App->render->Blit(items, 96, -(2880 - 1065 - SCREEN_HEIGHT), &(current_stair4_animation->GetCurrentFrame()));
 	App->render->Blit(items, 80, -(2880 - 743 - SCREEN_HEIGHT), &(current_stair5_animation->GetCurrentFrame()));
 	App->render->Blit(items, 120, -(2880 - 528 - SCREEN_HEIGHT), &(current_stair6_animation->GetCurrentFrame()));
+
 
 	////Fade to black to next lvl
 	//if (App->input->keyboard[SDL_SCANCODE_F2]) {
