@@ -92,22 +92,22 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 136, -(2880 - 360 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 152, -(2880 - 359 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 184, -(2880 - 296 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2844 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2787 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2756 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 2785 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 236, -(2880 - 2757 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 11, -(2880 - 2661 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 15, -(2880 - 2666 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 28, -(2880 - 2692 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 40, -(2880 - 2641 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 225, -(2880 - 2697 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 241, -(2880 - 2675 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 219, -(2880 - 2663 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 61, -(2880 - 2646 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 49, -(2880 - 2625 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 65, -(2880 - 2608 - SCREEN_HEIGHT));
@@ -119,7 +119,7 @@ bool ModuleLvl2::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 35, -(2880 - 2518 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 20, -(2880 - 2490 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 223, -(2880 - 2497 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 218, -(2880 - 2472 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 195, -(2880 - 2427 - SCREEN_HEIGHT));
@@ -156,7 +156,7 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 47, -(2880 - 2030 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 204, -(2880 - 2042 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 2044 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 219, -(2880 - 1968 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 236, -(2880 - 1988 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 91, -(2880 - 1958 - SCREEN_HEIGHT));
@@ -165,14 +165,14 @@ bool ModuleLvl2::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 30, -(2880 - 1849 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 45, -(2880 - 1860 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 194, -(2880 - 1879 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 230, -(2880 - 1886 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 1820 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 67, -(2880 - 1793 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 108, -(2880 - 1787 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 9, -(2880 - 1706 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 38, -(2880 - 1701 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 26, -(2880 - 1731 - SCREEN_HEIGHT));
@@ -198,7 +198,7 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 43, -(2880 - 1300 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 28, -(2880 - 1325 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 229, -(2880 - 1253 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 73, -(2880 - 1119 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 81, -(2880 - 1091 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 75, -(2880 - 1069 - SCREEN_HEIGHT));
@@ -229,12 +229,12 @@ bool ModuleLvl2::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 21, -(2880 - 691 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 46, -(2880 - 692 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 188, -(2880 - 639 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 166, -(2880 - 622 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 198, -(2880 - 604 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 149, -(2880 - 598 - SCREEN_HEIGHT));
-	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 46, -(2880 - 590 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 62, -(2880 - 567 - SCREEN_HEIGHT));
 
@@ -246,14 +246,29 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 451 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 466 - SCREEN_HEIGHT));
 
-
 	//PowerUps
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 48, -(2880 - 2432 - SCREEN_HEIGHT), false);
-	App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, 216, -(2880 - 1992 - SCREEN_HEIGHT), true);
-	App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, 174, -(2880 - 1648 - SCREEN_HEIGHT), true);
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 32, -(2880 - 1216 - SCREEN_HEIGHT), false);
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 200, -(2880 - 734 - SCREEN_HEIGHT), false);
-
+	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 48, -(2880 - 2432 - SCREEN_HEIGHT), false, "granade1");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::binocular]) {
+		App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, 216, -(2880 - 1992 - SCREEN_HEIGHT), true, "binocular");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::godmode]) {
+		App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, 174, -(2880 - 1648 - SCREEN_HEIGHT), true, "godmode");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::granade2]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 32, -(2880 - 1216 - SCREEN_HEIGHT), false, "granade2");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::granade3]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 200, -(2880 - 734 - SCREEN_HEIGHT), false, "granade3");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::ally1]) {
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(2880 - 869 - SCREEN_HEIGHT), false, "ally1");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::ally2]) {
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 0, -(2880 - 709 - SCREEN_HEIGHT), false, "ally2");
+		App->powerups_taken[pu_taken_lvl2::ally2] = true;
+	}
 	// Colliders ---
 	int i = 0;
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2166 - SCREEN_HEIGHT), 23, 111 }, COLLIDER_WALL);
