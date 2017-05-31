@@ -132,6 +132,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER_GRENADE_EXPL] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY_GRENADE] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_ENEMY_GRENADE_EXPL] = false;
+	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_POWERUP] = false;
 
 
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_WALL] = true;
@@ -242,7 +243,7 @@ update_status ModuleCollision::Update()
 
 void ModuleCollision::DebugDraw()
 {
-	if(App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN && 
+	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN &&
 		App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE)
 		debug = !debug;
 
