@@ -191,6 +191,8 @@ update_status ModulePlayer::Update(){
 			PlayerPowerUps[i] = false;
 		}
 	}
+
+
 	//RESPAWN
 	if (respawn && !App->secretareas->IsEnabled()) {
 		time_Counters[respawn] += 0.02f;
@@ -207,6 +209,76 @@ update_status ModulePlayer::Update(){
 			App->lvl2->playsoundlvl2 = true;
 		}
 	}
+
+	//Win, die and lose one live
+
+	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+		App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
+	{
+		live_counter = 1;
+		dead = true;
+
+	}
+	
+	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+		App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN)
+	{
+		dead = true;
+	}
+
+	//Debug for power ups
+
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) && 
+		App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::BAG, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::MEDAL, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
+	{
+		App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, position.x, position.y - 20);
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F9] == KEY_DOWN)
+	{
+		PlayerPowerUps[MEGA_SHOOT] = true;
+	}
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+		App->input->keyboard[SDL_SCANCODE_F10] == KEY_DOWN)
+	{
+		PlayerPowerUps[HANDGRANADE] = true;
+	}
+
 
 	//counters
 	if (current_animation == &upstairs || current_animation == &downstairs)

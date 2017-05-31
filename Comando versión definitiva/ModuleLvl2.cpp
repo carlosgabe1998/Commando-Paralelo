@@ -84,6 +84,8 @@ bool ModuleLvl2::Start() {
 		App->render->camera.y = -1470;
 	}
 
+	
+
 	//Add Enemies
 	//App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 113, -(2880 - 35 - SCREEN_HEIGHT));
@@ -96,8 +98,6 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2844 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2787 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2756 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 2785 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 236, -(2880 - 2757 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 11, -(2880 - 2661 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 15, -(2880 - 2666 - SCREEN_HEIGHT));
@@ -269,6 +269,8 @@ bool ModuleLvl2::Start() {
 		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 0, -(2880 - 709 - SCREEN_HEIGHT), false, "ally2");
 		App->powerups_taken[pu_taken_lvl2::ally2] = true;
 	}
+
+
 	// Colliders ---
 	int i = 0;
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2166 - SCREEN_HEIGHT), 23, 111 }, COLLIDER_WALL);
@@ -351,6 +353,7 @@ bool ModuleLvl2::Start() {
 	downstairs[j++] = App->collision->AddCollider({ 104, -(2880 - 1065 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
 	downstairs[j++] = App->collision->AddCollider({ 88, -(2880 - 743 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
 	downstairs[j++] = App->collision->AddCollider({ 128, -(2880 - 528 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
+	
 	//Colliders Water
 
 	i = 0;
@@ -370,8 +373,17 @@ bool ModuleLvl2::Start() {
 	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 1763 - SCREEN_HEIGHT), 85 - 5, 12 - 5 }, COLLIDER_WATER);
 	water[i++] = App->collision->AddCollider({ 107 + 5, -(2880 - 1523 - SCREEN_HEIGHT), 42 - 5, 12 - 5 }, COLLIDER_WATER);
 	water[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_WATER);
-	
+	water[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_WATER);
+
+	//Colliders antibullets
+
+	anti_bullet[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 157, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 142, -(2880 - 1343 - SCREEN_HEIGHT), 20, 66 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 92, -(2880 - 1343 - SCREEN_HEIGHT), 20, 66 }, COLLIDER_ANTIBULLET);
+
 	return true;
 }
 
