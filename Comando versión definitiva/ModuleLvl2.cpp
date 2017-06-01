@@ -143,7 +143,7 @@ bool ModuleLvl2::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRUCK, 260, -(2880 - 2698 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MOTORBIKE , 260, -(2880 - 2229 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::MOTORBIKE, 260, -(2880 - 2229 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::MOTORBIKE, -50, -(2880 - 2117 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 42, -(2880 - 2398 - SCREEN_HEIGHT));
@@ -163,22 +163,20 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 42, -(2880 - 1758 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 120, -(2880 - 1518 - SCREEN_HEIGHT));
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1190 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1190 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 74, -(2880 - 1239 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 124, -(2880 - 1239 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 104, -(2880 - 1284 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 177, -(2880 - 1273 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1190 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1190 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 74, -(2880 - 1239 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 124, -(2880 - 1239 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 104, -(2880 - 1284 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 177, -(2880 - 1273 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 117, -(2880 - 88 - SCREEN_HEIGHT));
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 997 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 947 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 758 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 664 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 524 - SCREEN_HEIGHT));
-	
-
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 997 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 947 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 758 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 664 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 524 - SCREEN_HEIGHT));*/
 
 	//PowerUps
 	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
@@ -206,7 +204,6 @@ bool ModuleLvl2::Start() {
 		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 0, -(2880 - 709 - SCREEN_HEIGHT), false, "ally2");
 		App->powerups_taken[pu_taken_lvl2::ally2] = true;
 	}
-	
 	// Colliders ---
 	int i = 0;
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2166 - SCREEN_HEIGHT), 23, 111 }, COLLIDER_WALL);
@@ -251,7 +248,7 @@ bool ModuleLvl2::Start() {
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 996 - SCREEN_HEIGHT), 28, 14 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 11, -(2880 - 985 - SCREEN_HEIGHT), 27, 10 }, COLLIDER_WALL);
 
-	wall[i++] = App->collision->AddCollider({ 228, -(2880 - 939- SCREEN_HEIGHT), 28, 14 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 228, -(2880 - 939 - SCREEN_HEIGHT), 28, 14 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 218, -(2880 - 928 - SCREEN_HEIGHT), 27, 12 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 755 - SCREEN_HEIGHT), 27, 14 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 12, -(2880 - 744 - SCREEN_HEIGHT), 26, 12 }, COLLIDER_WALL);
@@ -263,6 +260,7 @@ bool ModuleLvl2::Start() {
 	wall[i++] = App->collision->AddCollider({ 95, -(2880 - 0 - SCREEN_HEIGHT), 6, 49 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 155, -(2880 - 0 - SCREEN_HEIGHT), 6, 49 }, COLLIDER_WALL);
 
+
 	//downstairs colliders
 	int j = 0;
 	downstairs[j++] = App->collision->AddCollider({ 242, -(2880 - 2632 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
@@ -271,8 +269,8 @@ bool ModuleLvl2::Start() {
 	downstairs[j++] = App->collision->AddCollider({ 104, -(2880 - 1065 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
 	downstairs[j++] = App->collision->AddCollider({ 88, -(2880 - 743 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
 	downstairs[j++] = App->collision->AddCollider({ 128, -(2880 - 528 - SCREEN_HEIGHT), 8, 8 }, COLLIDER_DOWNSTAIRS);
-	
 	//Colliders Water
+
 	i = 0;
 	water[i++] = App->collision->AddCollider({ 141 + 5, -(2880 - 2388 - SCREEN_HEIGHT), 71 - 5, 10 - 5 }, COLLIDER_WATER);
 	water[i++] = App->collision->AddCollider({ 26 + 5, -(2880 - 2404 - SCREEN_HEIGHT), 28 - 5, 10 - 5 }, COLLIDER_WATER);
@@ -294,8 +292,8 @@ bool ModuleLvl2::Start() {
 
 	//Colliders antibullets y antienemys
 
-	anti_bullet[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_ANTIENEMY);
-	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_ANTIENEMY);
+	anti_enemy[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_ANTIENEMY);
+	anti_enemy[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_ANTIENEMY);
 
 	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
 	anti_bullet[i++] = App->collision->AddCollider({ 157, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
