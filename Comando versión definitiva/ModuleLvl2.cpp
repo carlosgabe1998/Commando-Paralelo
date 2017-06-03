@@ -66,16 +66,12 @@ bool ModuleLvl2::Start() {
 		App->render->camera.y = -1000;
 	}
 	if (App->secretareas->actual_room == ROOM4) {
-		App->player->position.y = -1500 + 140;
-		App->render->camera.y = -1500;
+		App->player->position.y = -1470 + 140;
+		App->render->camera.y = -1470;
 	}
-	if (App->secretareas->actual_room == ROOM5) {
+	if (App->secretareas->actual_room == ROOM5 || App->secretareas->actual_room == ROOM6) {
 		App->player->position.y = -2000 + 140;
 		App->render->camera.y = -2000;
-	}
-	if (App->secretareas->actual_room == ROOM6) {
-		App->player->position.y = -2500 + 140;
-		App->render->camera.y = -2500;
 	}if (checkpointpassed
 		&& App->secretareas->actual_room != ROOM4
 		&& App->secretareas->actual_room != ROOM5
@@ -86,6 +82,7 @@ bool ModuleLvl2::Start() {
 
 	//Add Enemies
 	//App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200);
+	
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 113, -(2880 - 35 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 59, -(2880 - 298 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 104, -(2880 - 361 - SCREEN_HEIGHT));
@@ -117,27 +114,27 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 141, -(2880 - 184 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 67, -(2880 - 190 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 189, -(2880 - 2714 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 118, -(2880 - 2698 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 120, -(2880 - 2529 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 216, -(2880 - 2498 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 35, -(2880 - 2494 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 85, -(2880 - 2131 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 209, -(2880 - 2059 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 41, -(2880 - 1932 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 201, -(2880 - 1868 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 165, -(2880 - 1716 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 58, -(2880 - 1586 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 169, -(2880 - 1490 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 39, -(2880 - 1240 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 158, -(2880 - 855 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 101, -(2880 - 863 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 99, -(2880 - 585 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 97, -(2880 - 323 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 162, -(2880 - 323 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 83, -(2880 - 96 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 62, -(2880 - 125 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 83, -(2880 - 136 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*189*/20, -(2880 - 2714 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*118*/230, -(2880 - 2698 - SCREEN_HEIGHT), "pathright");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 120, -(2880 - 2529 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*216*/20, -(2880 - 2498 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*35*/240, -(2880 - 2494 - SCREEN_HEIGHT), "pathright");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*85*/130, -(2880 - 2131 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*209*/10, -(2880 - 2059 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, /*41*/210, -(2880 - 1932 - SCREEN_HEIGHT), "pathright");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 201, -(2880 - 1868 - SCREEN_HEIGHT), "pathright");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 165, -(2880 - 1716 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 58, -(2880 - 1586 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 169, -(2880 - 1490 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 39, -(2880 - 1240 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 158, -(2880 - 855 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 101, -(2880 - 863 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 99, -(2880 - 585 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 97, -(2880 - 323 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 162, -(2880 - 323 - SCREEN_HEIGHT), "pathcenter");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 83, -(2880 - 96 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 62, -(2880 - 125 - SCREEN_HEIGHT), "pathleft");
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 83, -(2880 - 136 - SCREEN_HEIGHT), "pathleft");
 
 	App->enemies->AddEnemy(ENEMY_TYPES::CAR, 117, -(2880 - 2605 - SCREEN_HEIGHT));
 
@@ -164,16 +161,16 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 120, -(2880 - 1518 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1195 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1243- SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 110, -(2880 - 1282 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1243 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 20, -(2880 - 1282 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 117, -(2880 - 88 - SCREEN_HEIGHT));
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 977 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 921 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 737 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 643 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 503 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 977 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 921 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 737 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 643 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 503 - SCREEN_HEIGHT));
 
 	//PowerUps
 	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
@@ -302,7 +299,7 @@ bool ModuleLvl2::Start() {
 
 update_status ModuleLvl2::Update(){
 
-	if (!App->player->respawn && playsoundlvl2) {
+	if (!App->player->respawn && playsoundlvl2 && !App->player->win) {
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
 		playsoundlvl2 = false;
 	}

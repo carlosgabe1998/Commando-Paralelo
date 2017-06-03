@@ -297,10 +297,12 @@ update_status ModulePlayer::Update() {
 		move = false;
 		App->collision->Disable();
 		App->powerup->Disable();
+		App->enemies->Disable();
 		if (winsound) {
 			winsound = false;
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1 Cleared.ogg", false);
 		}
+		
 
 		if (position.x > 120) {
 			if (current_animation != &left)
@@ -324,8 +326,7 @@ update_status ModulePlayer::Update() {
 				up.Reset();
 				current_animation = &up;
 			}
-			if (position.y > -2880 + SCREEN_HEIGHT + 140)
-				App->render->camera.y += 3;
+			
 
 			if (position.y > -(2880 + 50 - SCREEN_HEIGHT)) {
 				position.y--;
@@ -339,6 +340,7 @@ update_status ModulePlayer::Update() {
 				endaudio = false;
 			}
 			App->render->Blit(byebye, 0, -(2880 - SCREEN_HEIGHT), nullptr);
+			App->render->camera.y = -(2880 - SCREEN_HEIGHT);
 			if (time_Counters[bye] > 40) {
 				App->fade->FadeToBlack(App->lvl2, App->welcome, 1);
 			}
@@ -359,7 +361,7 @@ update_status ModulePlayer::Update() {
 	//HIGHSCORE
 	if (score > highscore) {
 		highscore = score;
-		if (soundhighscore&&score>20000) {
+		if (soundhighscore&&score > 20000) {
 			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
 			soundhighscore = false;
 		}
@@ -391,141 +393,149 @@ update_status ModulePlayer::Update() {
 
 
 	//Win, die and lose one live
-
-
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
-	{		
-		position.x = (SCREEN_WIDTH / 2) - 7;
-		position.y = -(2880 - SCREEN_HEIGHT - 140);
-		App->render->camera.y = -(2880 - SCREEN_HEIGHT);
-		App->enemies->Disable();
-		App->particles->Disable();
-		win = true;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
+	if (!win && !dead && !App->welcome->IsEnabled())
 	{
-		live_counter = 1;
-		dead = true;
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
+		{
+			position.x = (SCREEN_WIDTH / 2) - 7;
+			position.y = -(2880 - SCREEN_HEIGHT - 140);
+			App->render->camera.y = -(2880 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+			App->particles->Disable();
+			win = true;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
+		{
+			live_counter = 1;
+			dead = true;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN)
+		{
+			dead = true;
+		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN)
-	{
-		dead = true;
-	}
 
 
 	//Changing rooms automatically
-
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
+	if (!win && !dead && !App->welcome->IsEnabled())
 	{
-		if (App->secretareas->IsEnabled())
-			App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM1);
-		else if (App->lvl2->IsEnabled())
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM1);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
+		{
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM1);
+			else if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM1);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
-	{
-		if (App->secretareas->IsEnabled())
-			App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM2);
-		else if (App->lvl2->IsEnabled())
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM2);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
+		{
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM2);
+			else if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM2);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
-	{
-		if (App->secretareas->IsEnabled())
-			App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM3);
-		else if (App->lvl2->IsEnabled())
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM3);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
+		{
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM3);
+			else if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM3);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F9] == KEY_DOWN)
-	{
-		if (App->secretareas->IsEnabled())
-			App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM4);
-		else if (App->lvl2->IsEnabled())
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM4);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F9] == KEY_DOWN)
+		{
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM4);
+			else if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM4);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F10] == KEY_DOWN)
-	{
-		if (App->secretareas->IsEnabled())
-			App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM5);
-		else if (App->lvl2->IsEnabled())
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM5);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F10] == KEY_DOWN)
+		{
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM5);
+			else if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM5);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_F11] == KEY_DOWN)
-	{
-		if (App->secretareas->IsEnabled())
-			App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM6);
-		else if (App->lvl2->IsEnabled())
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM6);
+		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_F11] == KEY_DOWN)
+		{
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->secretareas, 2, SECRETROOM::ROOM6);
+			else if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 2, SECRETROOM::ROOM6);
+		}
 	}
+	
 
 	//Debug for power ups
-
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
+	if (!win && !dead && !App->welcome->IsEnabled())
 	{
-		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, position.x, position.y - 20);
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::BAG, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::MEDAL, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
+		{
+			App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, position.x, position.y - 20);
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F9] == KEY_DOWN)
+		{
+			PlayerPowerUps[MEGA_SHOOT] = true;
+		}
+		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
+			App->input->keyboard[SDL_SCANCODE_F10] == KEY_DOWN)
+		{
+			PlayerPowerUps[HANDGRANADE] = true;
+		}
 	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::BAG, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::MEDAL, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F8] == KEY_DOWN)
-	{
-		App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, position.x, position.y - 20);
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F9] == KEY_DOWN)
-	{
-		PlayerPowerUps[MEGA_SHOOT] = true;
-	}
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
-		App->input->keyboard[SDL_SCANCODE_F10] == KEY_DOWN)
-	{
-		PlayerPowerUps[HANDGRANADE] = true;
-	}
+	
 
 
 	//counters
@@ -1407,8 +1417,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		}
 	}
+
 	if (c2->type == COLLIDER_DOWNSTAIRS&&dead == false) {
 		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT) && App->lvl2->current_stair1_animation == &App->lvl2->stair) {
+			App->particles->Disable();
 			App->secretareas->actual_room = SECRETROOM::ROOM1;
 			App->player->position.x = 234;
 			App->player->position.y = -(2880 - 2632 - SCREEN_HEIGHT);
